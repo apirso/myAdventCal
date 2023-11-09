@@ -1,0 +1,118 @@
+body{
+margin: 0;
+background-image: url('test.jpg');
+}
+.container{
+    margin: 5%;
+    text-align: center;
+}
+.day{
+
+    border:1px solid purple;
+    text-align: center;
+    font-size: 5vw;
+    font-family: 'Nosifer', sans-serif;
+    color: darkred;
+    justify-content: center;
+    margin: 5%;
+    cursor: default;
+    transform-origin: top;
+    transition:all 0.7s cubic-bezier(0.42, 0, 0.22, 1.34)
+}
+
+#day1{
+    border:1px solid purple;
+    text-align: center;
+    font-size: 5vw;
+    font-family: 'Nosifer', sans-serif;
+    color: darkred;
+    justify-content: center;
+    margin: 5%;
+    cursor: default;
+    transform-origin: top;
+    transition:all 0.7s cubic-bezier(0.42, 0, 0.22, 1.34)
+    
+}
+
+#advType{
+    border-radius: 65px;
+}
+
+
+.dayClicked{
+    font-size: 1.5vw;
+    font-family: 'Nosifer', sans-serif;
+    color: blue;
+    background: rgb(255, 192, 203, 1);
+    
+}
+
+.doorOpen
+{
+    transform: perspective(900px) translateZ(0px) translateX(0px) translateY(0px) rotateX(75deg);
+}
+
+.backDoor
+{
+  background-color: #333;
+  position:relative;
+  width:100%;
+  height:100%;
+  margin: 0 auto;
+}
+
+
+#app-calendar{
+    margin-top: 1%;
+display: grid;
+grid-template-columns: repeat(6, 1fr);
+grid-template-rows: repeat(4, 1fr);
+background: rgb(255, 192, 203, 0.5);
+
+}
+
+.day:hover {
+    background-color: rgba(255,255,255,0.40);
+}
+
+.day:nth-child(even) {
+   rotate: -5deg;
+   margin-right: 10%;
+  }
+
+  .day:nth-child(odd) {
+    rotate: 5deg;
+   }
+ 
+
+#title{
+font-family: 'Playpen Sans', cursive;
+color: palevioletred;
+}
+
+#advType{
+    background-color: unset;
+}
+
+.tapeOn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background: rgba(239, 239, 239, 0.8);
+    height: 5%;
+    width: 75%;
+}
+
+.tapeOff{
+    position: absolute;
+    z-index: 1;
+    top: -6%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background: rgba(239, 239, 239, 0.8);
+    height: 13%;
+    width: 75%;
+}
