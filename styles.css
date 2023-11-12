@@ -6,7 +6,7 @@ background-image: url('test.jpg');
     margin: 5%;
     text-align: center;
 }
-.day{
+.day {
 
     border:1px solid purple;
     text-align: center;
@@ -17,49 +17,25 @@ background-image: url('test.jpg');
     margin: 5%;
     cursor: default;
     transform-origin: top;
-    transition:all 0.7s cubic-bezier(0.42, 0, 0.22, 1.34)
+    transition:all 0.7s cubic-bezier(0.42, 0, 0.22, 1.34);
+    background: rgb(255, 192, 203, 1);
 }
 
-#day1{
-    border:1px solid purple;
-    text-align: center;
-    font-size: 5vw;
-    font-family: 'Nosifer', sans-serif;
-    color: darkred;
-    justify-content: center;
-    margin: 5%;
-    cursor: default;
-    transform-origin: top;
-    transition:all 0.7s cubic-bezier(0.42, 0, 0.22, 1.34)
-    
-}
+
 
 #advType{
     border-radius: 65px;
 }
 
 
-.dayClicked{
-    font-size: 1.5vw;
-    font-family: 'Nosifer', sans-serif;
-    color: blue;
-    background: rgb(255, 192, 203, 1);
-    
-}
+
 
 .doorOpen
 {
     transform: perspective(900px) translateZ(0px) translateX(0px) translateY(0px) rotateX(75deg);
 }
 
-.backDoor
-{
-  background-color: #333;
-  position:relative;
-  width:100%;
-  height:100%;
-  margin: 0 auto;
-}
+
 
 
 #app-calendar{
@@ -72,15 +48,15 @@ background: rgb(255, 192, 203, 0.5);
 }
 
 .day:hover {
-    background-color: rgba(255,255,255,0.40);
+    background-color: rgba(255,255,255,1);
 }
 
-.day:nth-child(even) {
+.backDoor:nth-child(even) {
    rotate: -5deg;
    margin-right: 10%;
   }
 
-  .day:nth-child(odd) {
+  .backDoor:nth-child(odd) {
     rotate: 5deg;
    }
  
@@ -96,7 +72,6 @@ color: palevioletred;
 
 .tapeOn{
     position: absolute;
-    top: 0;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -104,15 +79,37 @@ color: palevioletred;
     height: 5%;
     width: 75%;
 }
+.doorOpen .tapeOn{
+    /* background: green;
+    transition:all 0.7s cubic-bezier(0.42, 0, 0.22, 1.34)
+ */
+
+}
 
 .tapeOff{
     position: absolute;
     z-index: 1;
-    top: -6%;
     left: 0;
     right: 0;
     margin: 0 auto;
-    background: rgba(239, 239, 239, 0.8);
-    height: 13%;
+    background: rgba(239, 239, 239, 1);
+    height: 7%;
     width: 75%;
 }
+
+label, #advType{
+    font-family: 'Playpen Sans', cursive;
+    color: darkred;
+}
+
+/* background-image: url(https://m.media-amazon.com/images/M/MV5BNmE5NWQyYjktMmMzYi00YjY2LWFmNTUtMWQyMzcwNWM2NWYzXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,0,380,562_.jpg);
+object-fit: fill;
+    background-size: contain;
+    background-repeat: no-repeat; */
+
+    .movieImg{
+        position: absolute;
+        height: 80%;
+        z-index: -1;
+        left: 25%;
+    }

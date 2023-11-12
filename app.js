@@ -1,40 +1,43 @@
 let appCal = document.querySelector('#app-calendar')
+let advType= document.querySelector('#advType') //defines what genre the cal will show
+let genre = checkCookie('advType');
+let day;
+pageCreation()
+
+//makes the calander board with closed doors and sets a click element on all doors
+function pageCreation(){
 for (let day = 1; day <= 24; day +=1){
-  appCal.insertAdjacentHTML("beforeend",`<div class ='day'> <div class ='tapeOff'></div>
-  <div id='day${day}'><div class ='tapeOn'></div>${day}</div></div>`)
-  
-
-  // appCal.insertAdjacentHTML("beforeend",`<div class ='day' id='day${day}'><div class ='tapeOn'></div>
-  // ${day}</div>`)
-
- 
-  // appCal.insertAdjacentHTML("beforeend",`<div class ='backDoor'> <div class ='tapeOff'> </div>
-  // <div class ='day' id='day${day}'><div class ='tapeOn'></div>
-  // ${day}</div></div>`)
-  
-
+  appCal.insertAdjacentHTML("beforeend",`<div class ='backDoor'><div class ='tapeOff'></div>
+  <img class='movieImg' src="https://m.media-amazon.com/images/M/MV5BNmE5NWQyYjktMmMzYi00YjY2LWFmNTUtMWQyMzcwNWM2NWYzXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,0,380,562_.jpg"/><div class ='day'>
+  <div id='day${day}'><div class ='tapeOn'></div>${day}</div></div></div>`)
+  window.addEventListener('load',loadFilm) //loadFilm will check if doors have previously been selected
 }
 
-let day = document.querySelectorAll('.day')
+day = document.querySelectorAll('.day')
 day.forEach(function (i) {
-    i.addEventListener('click', function(){
-        console.log('You clicked Day: ' + i.id)
-        checkDoor(i)
+  i.addEventListener('click', function(){
+      checkDoor(i)
+      console.log('clicked')
+}
+  );
+});
+
+//opens a door when clicked on
+ for (let i = 0; i < day.length; i++) {
+  day[i].addEventListener("click", function() {
+    day[i].classList.toggle("doorOpen");
+     });
+ }
 
 }
-    );
-  });
 
-  let advType= document.querySelector('#advType')
-  window.addEventListener('load',loadFilm)
- 
-  //on pageLoad, check what theme to show
+  //function happens on pageLoad and checks what genre to show
   function loadFilm () {
     console.log('page loaded')
 
-    //make board
-    checkCookie('advType')
-    if(checkCookie('advType') =='horror'){
+    
+    //make board based on a user's selection. if the selection has not been chosen or the it's the user's first time, default and setcookie to classic
+    if(genre=='horror'){ 
         advType.selectedIndex =1
         console.log('show horror')
     }
@@ -42,10 +45,11 @@ day.forEach(function (i) {
         console.log('show classic')
         setCookie('advType','classic',30)
     }
-  checkCounter()
-  }
+ let allDoors= checkCounter()  //this function will return either adventDaysCounter which will be either an empty array or array full of previously checked days 
+showOpenDoors(allDoors)
+}
 
-
+//checkCounter will look at the cookies to see if the user has previously opened a day. If yes, then the funciton will return convertCounter
   function checkCounter(){
     if(checkCookie('adventDays')){
     console.log('days have been created')
@@ -53,9 +57,10 @@ day.forEach(function (i) {
   }
 else{
   console.log('new counter will need to be created')
-return createCounter()
+  return createCounter()
 }
 }
+;
 
 function convertCounter(){
 console.log('check cookie and convert into array')
@@ -66,8 +71,27 @@ return adventDaysCounter;
 
 function createCounter(){
   let adventDaysCounter =[] 
-  return adventDaysCounter;
+  return adventDaysCounter; //should i just return []
 }
+
+function showOpenDoors(allDoors){
+  //for all doors that have previously been opened, show image
+  console.log(`testing function to see if it works ${allDoors}`)
+let i = 0;
+while (i<allDoors.length) {
+  loop(i);
+  i++
+}
+
+function loop(i){
+  setTimeout(function(){
+    document.getElementById(`day${[allDoors[i]]}`).parentElement.classList.toggle("doorOpen");
+  }, 200 * i)
+}
+
+
+}
+
 
   //getCookie function based on advType
   function checkCookie(cname){
@@ -97,9 +121,8 @@ function createCounter(){
 
 
 
-// let adventDaysCounter =[] 
 
-function updateCounter(dayNo){
+function updateCounter(dayNo){ //specify wht counter is for
   let adventDaysCounter= checkCounter();
     if(!adventDaysCounter.includes(dayNo)){
     adventDaysCounter.push(dayNo);
@@ -141,20 +164,10 @@ if(checkCookie('advType') =='horror'){
     }
 
 }
-// advType.options[advType.selectedIndex].value
 
-// www.cssscript.com/winter-snow-animation/
-// const snowflake = new SnowflakeJs(25,50,100,3,25);
+
+// www.cssscript.com/winter-snow-animation/§
 const snowflake = new SnowflakeJs(frames=25, count=50, lifetime=100, maxSpeed=3, maxSize=25);X
 snowflake.init();
 
-// const snowflake = new SnowflakeJs(frames=25, count=50, lifetime=5000, maxSpeed=4, maxSize=15);X
 
-
-//toggle door
-var element = document.querySelector(".day");
-element.addEventListener("click", toggleDoor);
-
-function toggleDoor() {
-  element.classList.toggle("doorOpen");
-}
