@@ -2,13 +2,16 @@ let appCal = document.querySelector('#app-calendar')
 let advType= document.querySelector('#advType') //defines what genre the cal will show
 let genre = checkCookie('advType');
 let day;
+let elements;
+// let title = document.querySelector('.card-title')
+
 pageCreation()
 
 //makes the calander board with closed doors and sets a click element on all doors
 function pageCreation(){
 for (let day = 1; day <= 24; day +=1){
   appCal.insertAdjacentHTML("beforeend",`<div class ='backDoor'><div class ='tapeOff'></div>
-  <img class='movieImg' src="https://m.media-amazon.com/images/M/MV5BNmE5NWQyYjktMmMzYi00YjY2LWFmNTUtMWQyMzcwNWM2NWYzXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,0,380,562_.jpg"/><div class ='day'>
+  <img class='movieImg' id='movieImg-${day}' src="${horror[day-1].image}"/><div class ='day'>
   <div id='day${day}'><div class ='tapeOn'></div>${day}</div></div></div>`)
   window.addEventListener('load',loadFilm) //loadFilm will check if doors have previously been selected
 }
@@ -47,6 +50,37 @@ day.forEach(function (i) {
     }
  let allDoors= checkCounter()  //this function will return either adventDaysCounter which will be either an empty array or array full of previously checked days 
 showOpenDoors(allDoors)
+popUpInfo()
+}
+
+function popUpInfo(){
+  elements= document.querySelectorAll('.movieImg');
+  let clickEvent = (e) => {
+    console.log(e)
+    let str=e.srcElement.attributes.id.nodeValue
+   str = str.replace('movieImg-','')
+   console.log(str)
+
+let popup= document.getElementById('popup-container')
+
+
+  let popupImg=popup.children[0].childNodes[3].childNodes[1].childNodes[1]
+popupImg.src=e.target.currentSrc;
+let popupTitle = popup.children[0].childNodes[3].children[1].children[0].innerText=`${horror[str-1].movie}`
+console.log(popupTitle)
+    popup.style.visibility='visible'
+
+}
+
+
+elements.forEach((item) => {
+item.addEventListener('click', clickEvent)
+});
+let close = document.querySelector('#closeBtn');
+let closeEvent = () => {
+document.getElementById('popup-container').style.visibility='hidden'
+}
+close.addEventListener('click', closeEvent)
 }
 
 //checkCounter will look at the cookies to see if the user has previously opened a day. If yes, then the funciton will return convertCounter
@@ -169,5 +203,15 @@ if(checkCookie('advType') =='horror'){
 // www.cssscript.com/winter-snow-animation/§
 const snowflake = new SnowflakeJs(frames=25, count=50, lifetime=100, maxSpeed=3, maxSize=25);X
 snowflake.init();
+
+
+function createCard(){
+
+
+}
+// appCal.insertAdjacentHTML("beforeend",`<div class ='backDoor'><div class ='tapeOff'></div>
+//   <img class='movieImg' src="https://m.media-amazon.com/images/M/MV5BNmE5NWQyYjktMmMzYi00YjY2LWFmNTUtMWQyMzcwNWM2NWYzXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,0,380,562_.jpg"/><div class ='day'>
+//   <div id='day${day}'><div class ='tapeOn'></div>${day}</div></div></div>`)
+
 
 

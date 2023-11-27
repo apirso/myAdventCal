@@ -21,7 +21,9 @@ background-image: url('test.jpg');
     background: rgb(255, 192, 203, 1);
 }
 
-
+.card-text{
+    font-size: 2.5vmin;
+}
 
 #advType{
     border-radius: 65px;
@@ -113,3 +115,79 @@ object-fit: fill;
         z-index: -1;
         left: 25%;
     }
+
+   
+    #popup-container{
+        height: 40vw;
+        width: 90%;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(96 95 127 / 0.8);
+        position: absolute;
+        z-index: 1000;
+        left: 5%;
+        visibility: hidden;
+    }
+    
+    #popup{
+        background-color: #ffffff;
+        /* padding: 5% 10%; */
+        padding: 5% 5% 5% 2%;
+        display: flex;
+        margin: auto;
+        margin-top: 10%;
+        width: 50%;
+        border-radius: 15px;
+        max-height: 40%;
+        flex-direction: row-reverse;
+    }
+
+    .popup{
+        background-color: #ffffff;
+        padding: 20px 30px;
+        width: 50%;
+        border-radius: 15px;
+    }
+  
+    .close-popup a{
+        font-size: 1rem;
+        background-color: rebeccapurple;
+        color: #fff;
+        /* padding: 5px 10px;   */
+        padding: 1% 3%;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 10px;
+        margin-right: -8%;
+        margin-top: -7%;
+        right: -18%;
+    }
+    .popup-btn{
+        display: inline-block;
+        text-decoration: none;
+        border: 2px solid rebeccapurple;
+        padding: 5px 15px;
+        border-radius: 20px;
+        margin: 10px 0px;
+        transition: .2s all ease-in;
+    }
+    .popup-btn:hover{
+        background-color: rebeccapurple;
+        color: #fff;
+    }
+    .popup .show {
+        visibility: visible;
+        animation: fadeIn 1s;
+
+      }
+      .card-title{
+margin:0;
+font-size: 3.2vmin;
+      }
+    .card-right-side{
+        margin-left: 5%;
+      }
+   .card-img{
+    max-height: 18vw;
+   }
